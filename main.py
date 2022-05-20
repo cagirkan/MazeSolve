@@ -1,6 +1,6 @@
-from BFS_Algorithm import BFS
-from maze import MazeNode
-from Graph_Visualization import GraphVisualization
+from solvers.BFS_Algorithm import BFS
+from maze_generator.maze import MazeNode
+from visualizations.Graph_Visualization import GraphVisualization
 import networkx as nx
 import matplotlib.pyplot as plt
 

@@ -1,4 +1,4 @@
-from BFS_Algorithm import Node 
+from solvers.BFS_Algorithm import Node 
 class MazeNode(Node):
   """
     This class used to represent the node of a maze
