@@ -24,7 +24,7 @@ def main():
   }
 
   G = GraphVisualization()
-  for key, value in graph.items():
+  for key, value in read_graph.graph.items():
     for node in value:
       G.addEdge(key, node)
   G.visualize()
