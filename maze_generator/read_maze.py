@@ -3,6 +3,7 @@ from curses.ascii import NUL
 from matplotlib.pyplot import cla
 from numpy import delete
 from maze_generator.node import Node, NodeType
+import copy
 
 class ReadMaze():
     def __init__(self, path):
@@ -12,10 +13,11 @@ class ReadMaze():
         self.x_len = int(self.coords[0])
         self.y_len = int(self.coords[1])
         self.graph = {}
+        self.complete_graph = {}
         self.lines.pop(0)
         self.initialize_nodes(self.lines)
         self.add_neighbours()
-        self.simplify_graph()
+        self.simplify_graph_2()
         
         for line in self.nodes_matrix:
             for node in line:
@@ -75,19 +77,31 @@ class ReadMaze():
                     self.graph[node.name] = []
                     for neighbour in node.neighbours:
                         self.graph[node.name].append(neighbour.name)
+        self.complete_graph = copy.deepcopy(self.graph)
     
-    def simplify_graph(self):
-        deleted_nodes = []
-        for line in self.nodes_matrix:
-            for node in line:
-                if(len(node.neighbours) == 2 and node.type == NodeType.PATH):
-                    self.graph[node.name] = []
-                    for neighbor in node.neighbours:
-                        if node in neighbor.neighbours and neighbor.name not in deleted_nodes:
-                            self.graph[neighbor.name].remove(node.name)
-                    self.graph[node.neighbours[0].name].append(node.neighbours[1].name)
-                    deleted_nodes.append(node.name)
-
+    # def simplify_graph(self):
+    #     deleted_nodes = []
+    #     for line in self.nodes_matrix:
+    #         for node in line:
+    #             if(len(node.neighbours) == 2 and node.type == NodeType.PATH):
+    #                 self.graph.pop(node.name, None)
+    #                 for neighbor in node.neighbours:
+    #                     if node in neighbor.neighbours and neighbor.name not in deleted_nodes:
+    #                         self.graph[neighbor.name].remove(node.name)
+    #                         deleted_nodes.append(node.name)
+    #                 self.graph[node.neighbours[0].name].append(node.neighbours[1].name)
+    
+    def simplify_graph_2(self):
+        temp_graph = self.graph.copy()
+        for key, value in temp_graph.items():
+            if(len(value) == 2 and key != 'S' and key != 'T'):
+                self.graph[value[0]].remove(key)
+                self.graph[value[1]].remove(key)
+                if(value[1] not in self.graph[value[0]]):
+                    self.graph[value[0]].append(value[1])
+                if(value[0] not in self.graph[value[1]]):
+                    self.graph[value[1]].append(value[0])
+                self.graph.pop(key, None)
                 
 
     # def delete_node(self, node):

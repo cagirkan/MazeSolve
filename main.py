@@ -29,8 +29,15 @@ def main():
       G.addEdge(key, node)
   G.visualize()
 
-  mazes = MazeNode(graph, "S")
-  bfs = BFS(mazes, "I")
+  print(read_graph.complete_graph)
+  G2 = GraphVisualization()
+  for key, value in read_graph.complete_graph.items():
+    for node in value:
+      G2.addEdge(key, node)
+  G2.visualize()
+
+  mazes = MazeNode(read_graph.graph, "S")
+  bfs = BFS(mazes, "T")
   bfs.search()
 
 if __name__ == '__main__':
