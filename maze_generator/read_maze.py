@@ -17,7 +17,7 @@ class ReadMaze():
         self.lines.pop(0)
         self.initialize_nodes(self.lines)
         self.add_neighbours()
-        self.simplify_graph_2()
+        self.simplify_graph()
         
         for line in self.nodes_matrix:
             for node in line:
@@ -79,19 +79,8 @@ class ReadMaze():
                         self.graph[node.name].append(neighbour.name)
         self.complete_graph = copy.deepcopy(self.graph)
     
-    # def simplify_graph(self):
-    #     deleted_nodes = []
-    #     for line in self.nodes_matrix:
-    #         for node in line:
-    #             if(len(node.neighbours) == 2 and node.type == NodeType.PATH):
-    #                 self.graph.pop(node.name, None)
-    #                 for neighbor in node.neighbours:
-    #                     if node in neighbor.neighbours and neighbor.name not in deleted_nodes:
-    #                         self.graph[neighbor.name].remove(node.name)
-    #                         deleted_nodes.append(node.name)
-    #                 self.graph[node.neighbours[0].name].append(node.neighbours[1].name)
-    
-    def simplify_graph_2(self):
+
+    def simplify_graph(self):
         temp_graph = self.graph.copy()
         for key, value in temp_graph.items():
             if(len(value) == 2 and key != 'S' and key != 'T'):
@@ -102,14 +91,3 @@ class ReadMaze():
                 if(value[0] not in self.graph[value[1]]):
                     self.graph[value[1]].append(value[0])
                 self.graph.pop(key, None)
-                
-
-    # def delete_node(self, node):
-    #     temp_nodes = node.neighbours
-    #     self.graph[node.name] = []
-    #     for n in temp_nodes:
-    #         if(len(node.neighbours) == 2):
-    #             self.delete_node(n)
-    #         else:
-    #             return n
-
