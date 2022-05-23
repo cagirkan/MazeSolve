@@ -5,7 +5,7 @@ from numpy import delete
 from maze_generator.node import Node, NodeType
 import copy
 
-class ReadMaze():
+class ConvertMaze():
     def __init__(self, path):
         self.nodes_matrix = []
         self.lines = self.read_maze("mazes/" + path)

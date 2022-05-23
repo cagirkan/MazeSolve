@@ -1,4 +1,4 @@
-from maze_generator.read_maze import ReadMaze
+from maze_generator.convert_maze import ConvertMaze
 from solvers.BFS_Algorithm import BFS
 from maze_generator.maze import MazeNode
 from solvers.expand import Expand
@@ -8,22 +8,9 @@ import matplotlib.pyplot as plt
 
 def main():
   # Representation of a graph as a dictionary
-  read_graph = ReadMaze("1.in")
+  read_graph = ConvertMaze("1.in")
   print(read_graph.graph)
-  graph = {
-    "A": ['S'],
-    "B": ['C', 'D','S'],
-    "C": ['B', 'J'],
-    "D": ['B', 'G', 'S'],
-    "E": ['G', 'S'],
-    "F": ['G', 'H'],
-    "G": ['D', 'E', 'F', 'H', 'J'],
-    "H": ['F', 'G', 'I'],
-    "I": ['H', 'J'],
-    "J": ['C', 'G', 'I'],
-    "S": ['A', 'B', 'D', 'E']
-  }
-
+  
   G = GraphVisualization()
   for key, value in read_graph.graph.items():
     for node in value:
