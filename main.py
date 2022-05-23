@@ -31,7 +31,7 @@ def main():
   bfs = BFS(mazes, "T")
   bfs.search()
   print(bfs.solution)
-  expanded_solution = Expand(bfs.solution, read_graph.complete_graph)
+  expanded_solution = Expand(bfs.solution, read_graph.complete_graph, read_graph.nodes_matrix)
   print(expanded_solution.solution_path)
   print(read_graph.nodes_matrix)
   MazeVisual(read_graph.x_len, read_graph.y_len, read_graph.nodes_matrix)
