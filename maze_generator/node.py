@@ -9,6 +9,7 @@ class Node:
     def __init__(self, name, type):
         self.name = name
         self.type = type
+        self.is_passed = False
         self.neighbours = []
     
     def add_neighbour(self, neighbour):

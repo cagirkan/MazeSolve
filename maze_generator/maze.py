@@ -113,3 +113,6 @@ class MazeNode(Node):
 
 
     return path + f"\nPath lenght: {len(total_path)-1}"
+
+  def __repr__(self):
+      return self._find_path()
