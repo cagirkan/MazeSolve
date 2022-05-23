@@ -97,10 +97,12 @@ class ReadMaze():
             if(len(value) == 2 and key != 'S' and key != 'T'):
                 self.graph[value[0]].remove(key)
                 self.graph[value[1]].remove(key)
-                if(value[1] not in self.graph[value[0]]):
-                    self.graph[value[0]].append(value[1])
-                if(value[0] not in self.graph[value[1]]):
-                    self.graph[value[1]].append(value[0])
+                # if(value[1] not in self.graph[value[0]]):
+                #     self.graph[value[0]].append(value[1])
+                # if(value[0] not in self.graph[value[1]]):
+                #     self.graph[value[1]].append(value[0])
+                self.graph[value[0]].append(value[1])
+                self.graph[value[1]].append(value[0])
                 self.graph.pop(key, None)
                 
 

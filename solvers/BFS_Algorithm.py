@@ -37,6 +37,10 @@ class Node(ABC):
   @abstractmethod
   def __str__(self):
     pass
+
+  @abstractmethod
+  def __repr__(self):
+    pass
   
   
 
@@ -83,6 +87,7 @@ class BFS:
     self.checked_nodes = []
     self.number_of_steps = 0
     self.path = []
+    self.solution = []
 
   def insert_to_frontier(self, node):
     """
@@ -146,6 +151,7 @@ class BFS:
       if selected_node.is_the_solution(self.final_state):
         print(f"Solution Found in {self.number_of_steps} steps")
         print(selected_node)
+        self.solution = selected_node.__repr__()
         break
 
       # extend the node

@@ -12,7 +12,7 @@ class GraphVisualization:
           
     # addEdge function inputs the vertices of an
     # edge and appends it to the visual list
-    def addEdge(self, a, b):
+    def add_edge(self, a, b):
         temp = [a, b]
         self.visual.append(temp)
           
