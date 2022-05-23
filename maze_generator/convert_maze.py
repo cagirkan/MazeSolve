@@ -19,17 +19,7 @@ class ConvertMaze():
         self.add_neighbours()
         self.simplify_graph()
         
-        for line in self.nodes_matrix:
-            for node in line:
-                print(node.name, end =" ")
-            print()
 
-        for line in self.nodes_matrix:
-            for node in line:
-                print(node.type.name, end =" ")
-            print()
-
-    
     def read_maze(self, path):
         with open(path) as f:
             return f.read().splitlines()
@@ -86,10 +76,6 @@ class ConvertMaze():
             if(len(value) == 2 and key != 'S' and key != 'T'):
                 self.graph[value[0]].remove(key)
                 self.graph[value[1]].remove(key)
-                # if(value[1] not in self.graph[value[0]]):
-                #     self.graph[value[0]].append(value[1])
-                # if(value[0] not in self.graph[value[1]]):
-                #     self.graph[value[1]].append(value[0])
                 self.graph[value[0]].append(value[1])
                 self.graph[value[1]].append(value[0])
                 self.graph.pop(key, None)

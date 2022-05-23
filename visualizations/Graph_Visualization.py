@@ -21,8 +21,9 @@ class GraphVisualization:
     # creates a graph with a given list
     # nx.draw_networkx(G) - plots the graph
     # plt.show() - displays the graph
-    def visualize(self):
+    def visualize(self, name):
         G = nx.Graph()
         G.add_edges_from(self.visual)
         nx.draw_networkx(G)
+        plt.title(name)
         plt.show()

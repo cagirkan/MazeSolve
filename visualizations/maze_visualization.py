@@ -1,6 +1,5 @@
 import copy
 import matplotlib.pyplot as plt
-from pandas import array
 from maze_generator.node import NodeType
 
 class MazeVisual:
@@ -10,8 +9,8 @@ class MazeVisual:
         self.maze = maze
         self.maze_array = self.object_to_array(maze)
         self.solution_array = self.draw_solution(self.maze_array)
+        self.draw_maze("Solution", self.solution_array)
         self.draw_maze("Maze", self.maze_array)
-        self.draw_maze("Maze", self.solution_array)
         plt.show()
 
 
