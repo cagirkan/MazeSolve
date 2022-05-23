@@ -1,14 +1,18 @@
 from matplotlib.pyplot import flag
 
+from maze_generator.node import NodeType
+
 
 class Expand:
-    def __init__(self, solution, complete_graph):
+    def __init__(self, solution, complete_graph, maze):
         self.solution = solution
         self.complete_graph = complete_graph
+        self.maze = maze
         self.nodes_traversed = []
         self.solution_path = []
         self.flag = False
         self.expanded_graph = self.expand_solution()
+        self.mark_as_solved()
 
 
     def expand_solution(self):
@@ -25,6 +29,7 @@ class Expand:
                         self.nodes_traversed.append(neighbour)
                         neighbour_count = len(self.complete_graph[neighbour])
                         next_node = self.complete_graph[neighbour]
+                        current_node = k
                         while(neighbour_count == 2):
                             if(next_node[0] not in self.nodes_traversed):
                                 current_node = next_node[0]
@@ -40,3 +45,11 @@ class Expand:
                             break
                         self.nodes_traversed = []
         self.solution_path = list(dict.fromkeys(self.solution_path))
+    
+
+    def mark_as_solved(self):
+        for path in self.solution_path:
+            for line in self.maze:
+                for node in line:
+                    if(path == node.name and node.type == NodeType.PATH):
+                        node.is_passed = True
