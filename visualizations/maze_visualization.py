@@ -12,14 +12,14 @@ class MazeVisual:
         self.solution_array = self.draw_solution(self.maze_array)
         self.draw_maze("Maze", self.maze_array)
         self.draw_maze("Maze", self.solution_array)
+        plt.show()
 
 
     def draw_maze(self, name, array):
         plt.figure(figsize=(self.size_x,self.size_y))
         plt.imshow(array, cmap="tab20c")
         plt.title(name)
-        plt.show()
-    
+        
     
     def object_to_array(self, maze):
         maze_array = []
