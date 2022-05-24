@@ -9,6 +9,9 @@ from visualizations.maze_visualization import MazeVisual
 def main():
   # Representation of a graph as a dictionary
   
+  height=int(input("Enter a maze height: "))
+  width=int(input("Enter a maze width: "))
+  CreateMaze(height,width)
   read_graph = ConvertMaze("maze.in")
 
   
