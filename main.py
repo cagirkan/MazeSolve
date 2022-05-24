@@ -1,4 +1,5 @@
 from maze_generator.convert_maze import ConvertMaze
+from maze_generator.create_maze import CreateMaze
 from solvers.BFS_Algorithm import BFS
 from maze_generator.maze import MazeNode
 from solvers.expand import Expand
@@ -7,7 +8,10 @@ from visualizations.maze_visualization import MazeVisual
 
 def main():
   # Representation of a graph as a dictionary
-  read_graph = ConvertMaze("3.in")
+  #height=int(input("Enter a maze height: "))
+  #width=int(input("Enter a maze width: "))
+  #CreateMaze(height,width)
+  read_graph = ConvertMaze("maze.in")
 
   
   G = GraphVisualization()
