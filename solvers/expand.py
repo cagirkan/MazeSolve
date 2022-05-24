@@ -44,7 +44,9 @@ class Expand:
                             self.flag = True
                             break
                         self.nodes_traversed = []
+        self.solution_path.extend(self.solution)
         self.solution_path = list(dict.fromkeys(self.solution_path))
+        print(self.solution_path)
     
 
     def mark_as_solved(self):
