@@ -2,7 +2,6 @@
 
 ## Imports
 import random
-from colorama import init
 
 ## Functions
 def printMaze(maze):
@@ -37,10 +36,6 @@ def main(height, width, maze):
 	wall = '#'
 	cell = '.'
 	unvisited = 'u'
-	
-
-	# Initialize colorama
-	init()
 
 	# Denote all cells as unvisited
 	for i in range(0, height):
@@ -114,10 +109,7 @@ def main(height, width, maze):
 				
 
 				# Delete wall
-				for wall in walls:
-					if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
-						walls.remove(wall)
-
+				delete_wall(walls, rand_wall)
 				continue
 
 		# Check if it is an upper wall
@@ -152,10 +144,7 @@ def main(height, width, maze):
 							walls.append([rand_wall[0], rand_wall[1]+1])
 
 				# Delete wall
-				for wall in walls:
-					if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
-						walls.remove(wall)
-
+				delete_wall(walls, rand_wall)
 				continue
 
 		# Check the bottom wall
@@ -185,11 +174,7 @@ def main(height, width, maze):
 							walls.append([rand_wall[0], rand_wall[1]+1])
 
 				# Delete wall
-				for wall in walls:
-					if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
-						walls.remove(wall)
-
-
+				delete_wall(walls, rand_wall)
 				continue
 
 		# Check the right wall
@@ -219,35 +204,38 @@ def main(height, width, maze):
 							walls.append([rand_wall[0]-1, rand_wall[1]])
 
 				# Delete wall
-				for wall in walls:
-					if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
-						walls.remove(wall)
-
+				delete_wall(walls, rand_wall)
 				continue
 
 		# Delete the wall from the list anyway
-		for wall in walls:
-			if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
-				walls.remove(wall)
+		delete_wall(walls, rand_wall)
 		
-
-
 	# Mark the remaining unvisited cells as walls
-	for i in range(0, height):
-		for j in range(0, width):
-			if (maze[i][j] == 'u'):
-				maze[i][j] = '#'
+	make_walls(width, height)
 
-	# Set entrance and exit
-	for i in range(0, width):
-		if (maze[1][i] == '.'):
-			maze[1][i] = 'S'
-			break
+	# Set start and end
+	create_start_end(width, height)
 
-	for i in range(width-1, 0, -1):
-		if (maze[height-2][i] == '.'):
-			maze[height-2][i] = 'T'
-			break
+def delete_wall(walls, rand_wall):
+	for wall in walls:
+		if (wall[0] == rand_wall[0] and wall[1] == rand_wall[1]):
+			walls.remove(wall)
+
+def make_walls(width, height):
+    for i in range(0, height):
+        for j in range(0, width):
+            if (maze[i][j] == 'u'):
+                maze[i][j] = '#'
+
+def create_start_end(width, height):
+    for i in range(0, width):
+        if (maze[1][i] == '.'):
+            maze[1][i] = 'S'
+            break
+    for i in range(width-1, 0, -1):
+        if (maze[height-2][i] == '.'):
+            maze[height-2][i] = 'T'
+            break
 
 def write_file(maze,h,w):
 	
