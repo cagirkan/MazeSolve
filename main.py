@@ -7,7 +7,8 @@ from visualizations.maze_visualization import MazeVisual
 
 def main():
   # Representation of a graph as a dictionary
-  read_graph = ConvertMaze("3.in")
+  
+  read_graph = ConvertMaze("maze.in")
 
   
   G = GraphVisualization()
