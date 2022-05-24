@@ -4,7 +4,7 @@
 import random
 
 ## Functions
-def printMaze(maze):
+def print_maze(maze):
 	for i in range(0, height):
 		for j in range(0, width):
 			if (maze[i][j] == 'u'):
@@ -17,7 +17,7 @@ def printMaze(maze):
 		print('\n')
 
 # Find number of surrounding cells
-def surroundingCells(rand_wall):
+def surrounding_cells(rand_wall):
 	s_cells = 0
 	if (maze[rand_wall[0]-1][rand_wall[1]] == '.'):
 		s_cells += 1
@@ -78,7 +78,7 @@ def main(height, width, maze):
 		if (rand_wall[1] != 0):
 			if (maze[rand_wall[0]][rand_wall[1]-1] == 'u' and maze[rand_wall[0]][rand_wall[1]+1] == '.'):
 				# Find the number of surrounding cells
-				s_cells = surroundingCells(rand_wall)
+				s_cells = surrounding_cells(rand_wall)
 
 				if (s_cells < 2):
 					# Denote the new path
@@ -116,7 +116,7 @@ def main(height, width, maze):
 		if (rand_wall[0] != 0):
 			if (maze[rand_wall[0]-1][rand_wall[1]] == 'u' and maze[rand_wall[0]+1][rand_wall[1]] == '.'):
 
-				s_cells = surroundingCells(rand_wall)
+				s_cells = surrounding_cells(rand_wall)
 				if (s_cells < 2):
 					# Denote the new path
 					maze[rand_wall[0]][rand_wall[1]] = '.'
@@ -151,7 +151,7 @@ def main(height, width, maze):
 		if (rand_wall[0] != height-1):
 			if (maze[rand_wall[0]+1][rand_wall[1]] == 'u' and maze[rand_wall[0]-1][rand_wall[1]] == '.'):
 
-				s_cells = surroundingCells(rand_wall)
+				s_cells = surrounding_cells(rand_wall)
 				if (s_cells < 2):
 					# Denote the new path
 					maze[rand_wall[0]][rand_wall[1]] = '.'
@@ -181,7 +181,7 @@ def main(height, width, maze):
 		if (rand_wall[1] != width-1):
 			if (maze[rand_wall[0]][rand_wall[1]+1] == 'u' and maze[rand_wall[0]][rand_wall[1]-1] == '.'):
 
-				s_cells = surroundingCells(rand_wall)
+				s_cells = surrounding_cells(rand_wall)
 				if (s_cells < 2):
 					# Denote the new path
 					maze[rand_wall[0]][rand_wall[1]] = '.'
@@ -257,5 +257,5 @@ if __name__ == '__main__':
 	maze = []
 	main(height,width,maze)
 	# Print final maze
-	printMaze(maze)
+	print_maze(maze)
 	write_file(maze,height,width)
