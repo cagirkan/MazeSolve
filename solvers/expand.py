@@ -30,7 +30,7 @@ class Expand:
                         neighbour_count = len(self.complete_graph[neighbour])
                         next_node = self.complete_graph[neighbour]
                         current_node = k
-                        while(neighbour_count == 2):
+                        while(neighbour_count == 2 and current_node != 'T'):
                             if(next_node[0] not in self.nodes_traversed):
                                 current_node = next_node[0]
                             else:
