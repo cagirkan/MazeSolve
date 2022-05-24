@@ -1,6 +1,3 @@
-from asyncio.windows_events import NULL
-from curses.ascii import NUL
-from matplotlib.pyplot import cla
 from numpy import delete
 from maze_generator.node import Node, NodeType
 import copy
