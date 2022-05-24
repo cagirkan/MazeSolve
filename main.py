@@ -1,4 +1,5 @@
 from maze_generator.convert_maze import ConvertMaze
+from maze_generator.create_maze import CreateMaze
 from solvers.BFS_Algorithm import BFS
 from maze_generator.maze import MazeNode
 from solvers.expand import Expand
