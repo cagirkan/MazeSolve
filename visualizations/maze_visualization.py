@@ -37,7 +37,7 @@ class MazeVisual:
         return maze_array
 
 
-    def draw_solution(self, maze):
+    def draw_solution(self, maze):  
         solution_array = copy.deepcopy(maze)
         for line in range(self.size_x):
             for color in range(self.size_y):
