@@ -249,8 +249,10 @@ def main(height, width, maze):
 			maze[height-2][i] = 'T'
 			break
 
-def write_file(maze):
+def write_file(maze,h,w):
+	
 	with open("mazes/maze.in", "w") as f:
+		f.write(str(h)+ " " +str(w)+'\n')
 		for i in range(0, height):
 			for j in range(0, width):
 				if (maze[i][j] == 'u'):
@@ -268,4 +270,4 @@ if __name__ == '__main__':
 	main(height,width,maze)
 	# Print final maze
 	printMaze(maze)
-	write_file(maze)
+	write_file(maze,height,width)
