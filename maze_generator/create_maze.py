@@ -250,7 +250,7 @@ def main(height, width, maze):
 			break
 
 def write_file(maze):
-	with open("maze.in", "w") as f:
+	with open("mazes/maze.in", "w") as f:
 		for i in range(0, height):
 			for j in range(0, width):
 				if (maze[i][j] == 'u'):
